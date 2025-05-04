@@ -18,7 +18,7 @@ export function App() {
   )
 }
 
-//TODO:
+// Requisitos do projeto:
 // - Listagem de produtos (cafés) disponíveis para compra
 // - Adicionar uma quantidade específicas de itens no carrinho
 // - Aumentar ou remover a quantidade de itens no carrinho

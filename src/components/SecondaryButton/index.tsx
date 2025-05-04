@@ -1,5 +1,5 @@
 import { JSX } from "react"
-import { ButtonContainer } from "./styles"
+import { SecondaryButtonContainer } from "./styles"
 
 interface ButtonProps {
   label: string
@@ -9,9 +9,9 @@ interface ButtonProps {
 
 export function SecondaryButton({ label, icon, onClick }: ButtonProps) {
   return (
-    <ButtonContainer onClick={onClick}>
+    <SecondaryButtonContainer onClick={onClick}>
       <span>{icon}</span>
       <p>{label}</p>
-    </ButtonContainer>
+    </SecondaryButtonContainer>
   )
 }

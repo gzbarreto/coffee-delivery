@@ -1,5 +1,5 @@
 import { JSX } from "react"
-import { ButtonContainer } from "./styles"
+import { IconButtonContainer } from "./styles"
 
 interface ButtonProps {
   icon: JSX.Element
@@ -7,5 +7,5 @@ interface ButtonProps {
 }
 
 export function IconButton({ icon, onClick }: ButtonProps) {
-  return <ButtonContainer onClick={onClick}>{icon}</ButtonContainer>
+  return <IconButtonContainer onClick={onClick}>{icon}</IconButtonContainer>
 }

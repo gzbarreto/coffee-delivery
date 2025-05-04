@@ -1,4 +1,4 @@
-import { ButtonContainer } from "./styles"
+import { PrimaryButtonContainer } from "./styles"
 
 interface ButtonProps {
   label: string
@@ -6,5 +6,7 @@ interface ButtonProps {
 }
 
 export function PrimaryButton({ label, onClick }: ButtonProps) {
-  return <ButtonContainer onClick={onClick}>{label}</ButtonContainer>
+  return (
+    <PrimaryButtonContainer onClick={onClick}>{label}</PrimaryButtonContainer>
+  )
 }
