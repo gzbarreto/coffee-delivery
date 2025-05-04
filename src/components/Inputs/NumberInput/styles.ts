@@ -30,7 +30,7 @@ export const NumberInputContainer = styled.div`
   }
 
   input {
-    width: 2rem;
+    width: 1rem;
     border: none;
     background: transparent;
     color: ${(props) => props.theme["base-title"]};
