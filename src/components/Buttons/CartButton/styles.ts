@@ -5,20 +5,18 @@ export const CartButtonContainer = styled.button`
   align-items: center;
   justify-content: center;
   line-height: 0;
-  margin: 0.5rem 0 0 0;
+  padding: 0.5rem;
 
   background-color: ${(props) => props.theme["yellow-light"]};
   color: ${(props) => props.theme["yellow-dark"]};
 
-  border: none;
+  border: 1px solid transparent;
   border-radius: 6px;
 
-  padding: 0.5rem;
 
   cursor: pointer;
   transition: border 0.2s;
 
-  border: 1px solid transparent;
 
   &:hover {
     border: 1px solid ${(props) => props.theme["yellow"]};
