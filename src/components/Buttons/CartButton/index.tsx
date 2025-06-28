@@ -3,7 +3,7 @@ import { BadgeContainer, CartButtonContainer } from "./styles"
 
 interface ButtonProps {
   badgeNumber?: number
-  onClick?: () => void
+  onClick: () => void
 }
 
 export function CartButton({ badgeNumber, onClick }: ButtonProps) {
