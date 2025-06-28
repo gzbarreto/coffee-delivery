@@ -2,6 +2,7 @@ import styled, { css } from "styled-components"
 
 interface TextInputContainerProps {
   hasFocus: boolean
+  area?: string;
 }
 
 export const TextInputContainer = styled.div<TextInputContainerProps>`
@@ -11,7 +12,9 @@ export const TextInputContainer = styled.div<TextInputContainerProps>`
   gap: 0.25rem;
   padding: 0.75rem;
   border-radius: 4px;
+  grid-area: ${(props) => props.area || null};
 
+  width: 100%;
   background-color: ${(props) => props.theme["base-input"]};
   border: 1px solid ${(props) => props.theme["base-button"]};
 
