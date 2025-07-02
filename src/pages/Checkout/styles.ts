@@ -4,7 +4,7 @@ export const CheckoutContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 28rem;
   gap: 2rem;
-  margin-top: 2.5rem;
+  margin-top: 0.75rem;
 
   h4 {
     font-size: 1.125rem;

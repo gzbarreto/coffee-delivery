@@ -20,9 +20,12 @@ import { SelectButton } from "../../components/Buttons/SelectButton"
 import { CardSmall } from "../../components/Card/CardSmall"
 import { coffeeTypes } from "../../mocks/CoffeeCatalog"
 import { PrimaryButton } from "../../components/Buttons/PrimaryButton"
+import { useNavigate } from "react-router"
 
 export function Checkout() {
   const cartCoffees = coffeeTypes.slice(0, 2) //Mocking: Get first two coffees for the cart
+  const navigate = useNavigate()
+
 
   return (
     <CheckoutContainer>
@@ -102,7 +105,10 @@ export function Checkout() {
               </tbody>
             </table>
           </Pricing>
-          <PrimaryButton label="Confirmar Pedido" />
+          <PrimaryButton
+            label="Confirmar Pedido"
+            onClick={() => navigate("/success")}
+          />
         </CartContainer>
       </ContentWrapper>
     </CheckoutContainer>

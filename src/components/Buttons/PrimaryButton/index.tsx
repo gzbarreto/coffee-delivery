@@ -2,7 +2,7 @@ import { PrimaryButtonContainer } from "./styles"
 
 interface ButtonProps {
   label: string
-  onClick?: () => void
+  onClick: () => void
 }
 
 export function PrimaryButton({ label, onClick }: ButtonProps) {
