@@ -9,6 +9,12 @@ export const CardContainer = styled.div`
 
   background: ${(props) => props.theme["base-card"]};
   padding: 0.5rem 0.25rem;
+
+  & {
+    border-bottom: 1px solid ${(props) => props.theme["base-button"]};
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 `
 
 export const ContentContainer = styled.div`

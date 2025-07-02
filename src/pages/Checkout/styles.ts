@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 export const CheckoutContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 28rem;
   gap: 2rem;
   margin-top: 2.5rem;
 
@@ -13,7 +14,7 @@ export const CheckoutContainer = styled.div`
   }
 `
 
-export const FormContainer = styled.div`
+export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -65,12 +66,47 @@ export const TitleContainer = styled.div`
 `
 
 export const PaymentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: ${(props) => props.theme["base-card"]};
+  padding: 2.5rem;
+  border-radius: 6px;
+  gap: 2rem;
+`
 
-  width: 40%;
-  margin: 0 auto;
+export const PaymentMethodsContainer = styled.div`
+  display: flex;
+  gap: 1rem;
 `
 
 export const CartContainer = styled.div`
-  width: 40%;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: ${(props) => props.theme["base-card"]};
+  padding: 2.5rem;
+  border-radius: 6px 44px 6px 44px;
+`
+export const Pricing = styled.div`
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+  }
+
+  td {
+    font-size: 0.875rem;
+    color: ${(props) => props.theme["base-text"]};
+    padding-top: 0.75rem;
+  }
+
+  td:last-child {
+    text-align: right;
+    font-size: 1rem;
+  }
+
+  tr:last-child td {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: ${(props) => props.theme["base-subtitle"]};
+  }
 `

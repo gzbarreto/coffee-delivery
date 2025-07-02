@@ -12,7 +12,7 @@ export const SelectContainer = styled.button`
   border: 2px solid transparent;
   border-radius: 6px;
 
-  padding: 1rem;
+  padding: 0.75rem;
 
   font-size: 0.875rem;
   line-height: 160%;

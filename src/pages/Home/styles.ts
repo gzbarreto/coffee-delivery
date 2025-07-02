@@ -78,7 +78,6 @@ export const CoffeeListContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3.375rem;
-  margin-bottom: 10rem;
 
   h2 {
     font-family: "Baloo 2", sans-serif;
