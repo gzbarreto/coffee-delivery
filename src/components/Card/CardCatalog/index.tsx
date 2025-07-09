@@ -2,6 +2,7 @@ import { ShoppingCart } from "@phosphor-icons/react"
 import { IconButton } from "../../Buttons/IconButton"
 import { NumberInput } from "../../Inputs/NumberInput"
 import { CardCatalogContainer, FooterContainer, PriceContainer, TagContainer } from "./styles"
+import { useState } from "react"
 
 interface CardCatalogProps {
   title: string
@@ -18,6 +19,14 @@ export function CardCatalog({
   tags,
   srcImg,
 }: CardCatalogProps) {
+  
+  const [quantity, setQuantity] = useState(1)
+
+  function handleAddToCart() {
+    // Ao clicar o botão do carrinho, adiciona o item ao carrinho
+    console.log(`${title} added to cart`);
+    console.log(`Quantity: ${quantity}`);
+  }
 
   return (
     <CardCatalogContainer>
@@ -35,8 +44,8 @@ export function CardCatalog({
           <span>R$</span>{price.toFixed(2).replace(".", ",")}
         </PriceContainer>
         <div>
-          <NumberInput />
-          <IconButton icon={<ShoppingCart size={22} weight="fill" />} />
+          <NumberInput value={quantity} onChange={setQuantity}/>
+          <IconButton icon={<ShoppingCart size={22} weight="fill" />} onClick={handleAddToCart}/>
         </div>
       </FooterContainer>
     </CardCatalogContainer>
