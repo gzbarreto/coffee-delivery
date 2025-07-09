@@ -4,14 +4,15 @@ import { Router } from "./Router.tsx"
 import { ThemeProvider } from "styled-components"
 import { defaultTheme } from "./styles/themes/default.ts"
 import { GlobalStyle } from "./styles/global.ts"
+import { OrderContextProvider } from "./contexts/OrderContext.tsx"
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
-
+        <OrderContextProvider>
           <Router />
-
+        </OrderContextProvider>
       </BrowserRouter>
       <GlobalStyle />
     </ThemeProvider>
