@@ -18,14 +18,14 @@ import {
 import { TextInput } from "../../components/Inputs/TextInput"
 import { SelectButton } from "../../components/Buttons/SelectButton"
 import { CardSmall } from "../../components/Card/CardSmall"
-import { coffeeTypes } from "../../mocks/CoffeeCatalog"
 import { PrimaryButton } from "../../components/Buttons/PrimaryButton"
 import { useNavigate } from "react-router"
+import { useContext } from "react"
+import { CartContext } from "../../contexts/CartContext"
 
 export function Checkout() {
-  const cartCoffees = coffeeTypes.slice(0, 2) //Mocking: Get first two coffees for the cart
+  const { coffeeList, deliveryFee } = useContext(CartContext)
   const navigate = useNavigate()
-
 
   return (
     <CheckoutContainer>
@@ -72,7 +72,7 @@ export function Checkout() {
               icon={<Bank size={16} color="#8047F8" />}
             />
             <SelectButton
-              label="Cartão de Débito"
+              label="Dinheiro"
               icon={<Money size={16} color="#8047F8" />}
             />
           </PaymentMethodsContainer>
@@ -82,8 +82,8 @@ export function Checkout() {
       <ContentWrapper>
         <h4>Cafés selecionados</h4>
         <CartContainer>
-          {cartCoffees.map((coffee) => (
-            <CardSmall key={coffee.id} {...coffee} />
+          {coffeeList?.map((coffeeItem) => (
+            <CardSmall key={coffeeItem.coffee.id} {...coffeeItem.coffee} quantity={coffeeItem.quantity}/>
           ))}
           <Pricing>
             <table>
@@ -94,7 +94,7 @@ export function Checkout() {
                 </tr>
                 <tr>
                   <td>Entrega</td>
-                  <td>R$3,50</td>
+                  <td>R${deliveryFee}</td>
                 </tr>
                 <tr>
                   <td>Total</td>
@@ -107,7 +107,7 @@ export function Checkout() {
           </Pricing>
           <PrimaryButton
             label="Confirmar Pedido"
-            onClick={() => navigate("/success")}
+            onClick={() => console.log(coffeeList)}
           />
         </CartContainer>
       </ContentWrapper>

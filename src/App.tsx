@@ -4,20 +4,23 @@ import { Router } from "./Router.tsx"
 import { ThemeProvider } from "styled-components"
 import { defaultTheme } from "./styles/themes/default.ts"
 import { GlobalStyle } from "./styles/global.ts"
-import { OrderContextProvider } from "./contexts/OrderContext.tsx"
+import { CartContextProvider } from "./contexts/CartContext.tsx"
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
-        <OrderContextProvider>
+        <CartContextProvider>
           <Router />
-        </OrderContextProvider>
+        </CartContextProvider>
       </BrowserRouter>
       <GlobalStyle />
     </ThemeProvider>
   )
 }
+
+//TODO: refazer o contexto de order, trocando pra simplesmente CART. Nao precisa acompanhar o
+//pedido, apenas o carrinho, nao precisa nem de ID
 
 // Requisitos do projeto:
 // - Listagem de produtos (cafés) disponíveis para compra DONE

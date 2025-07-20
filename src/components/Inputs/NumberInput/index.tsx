@@ -3,10 +3,11 @@ import { NumberInputContainer } from "./styles"
 
 interface NumberInputProps {
   value: number
+  defaultValue?: number
   onChange: (value: number) => void
 }
 
-export function NumberInput({ value, onChange }: NumberInputProps) {
+export function NumberInput({ value, defaultValue, onChange }: NumberInputProps) {
   function handleAddItem() {
     onChange(value + 1)
   }
@@ -21,7 +22,7 @@ export function NumberInput({ value, onChange }: NumberInputProps) {
         <Minus size={14} weight="bold" />
       </button>
 
-      <input type="number" value={value} />
+      <input type="number" defaultValue={defaultValue} value={value} />
 
       <button onClick={handleAddItem}>
         <Plus size={14} weight="bold" />

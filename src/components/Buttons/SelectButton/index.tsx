@@ -2,7 +2,7 @@ import { JSX } from "react"
 import { SelectContainer, SelectContainerSelected } from "./styles"
 
 interface ButtonProps {
-  label: string
+  label: "Cartão de Crédito" | "Cartão de Débito" | "Dinheiro"
   icon: JSX.Element
   isSelected?: boolean
   onClick?: () => void

@@ -64,6 +64,7 @@ export function Home() {
          {coffeeTypes.map(coffee => (
             <CardCatalog key={coffee.id} {...coffee} />
           ))}
+
         </CoffeeList>
       </CoffeeListContainer>
     </HomeContainer>

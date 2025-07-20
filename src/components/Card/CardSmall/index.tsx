@@ -13,9 +13,10 @@ interface CardSmallProps {
   title: string
   price: number
   srcImg: string
+  quantity: number
 }
 
-export function CardSmall({ title, price, srcImg }: CardSmallProps) {
+export function CardSmall({ title, price, srcImg, quantity }: CardSmallProps) {
   return (
     <CardContainer>
       <ContentContainer>
@@ -23,7 +24,7 @@ export function CardSmall({ title, price, srcImg }: CardSmallProps) {
         <Details>
           <h5>{title}</h5>
           <ButtonsContainer>
-            <NumberInput />
+            <NumberInput defaultValue={quantity}/>
             <SecondaryButton icon={<Trash size={16} />} label="Remover" />
           </ButtonsContainer>
         </Details>
