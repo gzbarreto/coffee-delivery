@@ -24,8 +24,8 @@ export function App() {
 
 // Requisitos do projeto:
 // - Listagem de produtos (cafés) disponíveis para compra DONE
-// - Adicionar uma quantidade específicas de itens no carrinho
-// - Aumentar ou remover a quantidade de itens no carrinho
+// - Adicionar uma quantidade específicas de itens no carrinho DONE
+// - Aumentar ou remover a quantidade de itens no carrinho DONE
 // - Formulário para o usuário preencher o seu endereço
-// - Exibir o total de itens no carrinho no Header
-// - Exibir o valor total da soma de itens no carrinho multiplicados pelo valor
+// - Exibir o total de itens no carrinho no Header 
+// - Exibir o valor total da soma de itens no carrinho multiplicados pelo valor (usar funcao REDUCE dos arrays)

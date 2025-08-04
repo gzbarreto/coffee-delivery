@@ -70,6 +70,16 @@ export function cartReducer(state: CartState, action: any) {
       }
     }
 
+    case Actions.REMOVE_FROM_CART: {
+      const updatedCoffeeList = state.coffeeList.filter(
+        (item) => item.coffee.id !== action.payload.id
+      )
+      return {
+        ...state,
+        coffeeList: updatedCoffeeList,
+      }
+    }
+
     default:
       return state
   }

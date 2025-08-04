@@ -26,7 +26,7 @@ export function CardSmall({
   srcImg,
   quantity,
 }: CardSmallProps) {
-  const { updateCart } = useContext(CartContext)
+  const { updateCart, removeFromCart } = useContext(CartContext)
 
   function setCoffeeQuantity(newQuantity: number) {
     console.log(newQuantity)
@@ -41,7 +41,7 @@ export function CardSmall({
           <h5>{title}</h5>
           <ButtonsContainer>
             <NumberInput value={quantity} onChange={setCoffeeQuantity} />
-            <SecondaryButton icon={<Trash size={16} />} label="Remover" />
+            <SecondaryButton icon={<Trash size={16} />} label="Remover" onClick={() => removeFromCart(key)}/>
           </ButtonsContainer>
         </Details>
       </ContentContainer>
