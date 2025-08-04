@@ -19,7 +19,7 @@ export function CardCatalog({
   tags,
   srcImg,
 }: Coffee) {
-  const { updateCart } = useContext(CartContext)
+  const { addToCart } = useContext(CartContext)
 
   //controla a quantidade de items no card
   const [quantity, setQuantity] = useState(1)
@@ -31,7 +31,7 @@ export function CardCatalog({
       price,
       srcImg,
     }
-    updateCart(newCoffee, quantity)
+    addToCart(newCoffee, quantity)
     setQuantity(1) // Reseta a quantidade após adicionar ao carrinho
   }
 

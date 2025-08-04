@@ -5,7 +5,7 @@ import {
   Address,
   cartReducer,
 } from "../reducers/cart/reducer"
-import { updateCartAction } from "../reducers/cart/actions"
+import { addToCartAction, updateCartAction } from "../reducers/cart/actions"
 
 interface CartContextProviderProps {
   children: ReactNode
@@ -16,7 +16,8 @@ interface CartContextType {
   address?: Address
   paymentMethod?: string
   deliveryFee?: number
-  updateCart: (coffee: Coffee, quantity: number) => void
+  addToCart: (coffee: Coffee, quantity: number) => void
+  updateCart: (id: number, newQuantity: number) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -32,8 +33,12 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   const { coffeeList, deliveryFee } = cartState
 
   // Function to update the cart when user adds a coffee
-  function updateCart(coffee: Coffee, quantity: number) {
-    dispatch(updateCartAction(coffee, quantity))
+  function addToCart(coffee: Coffee, quantity: number) {
+    dispatch(addToCartAction(coffee, quantity))
+  }
+
+  function updateCart(id: number, newQuantity: number) {
+    dispatch(updateCartAction(id, newQuantity))
   }
 
   return (
@@ -41,6 +46,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       value={{
         coffeeList,
         deliveryFee,
+        addToCart,
         updateCart,
       }}
     >

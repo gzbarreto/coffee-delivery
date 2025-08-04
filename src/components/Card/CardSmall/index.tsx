@@ -8,15 +8,31 @@ import {
   Details,
   PriceTagContainer,
 } from "./styles"
+import { CartContext } from "../../../contexts/CartContext"
+import { useContext } from "react"
 
 interface CardSmallProps {
+  id: number
   title: string
   price: number
   srcImg: string
   quantity: number
 }
 
-export function CardSmall({ title, price, srcImg, quantity }: CardSmallProps) {
+export function CardSmall({
+  id: key,
+  title,
+  price,
+  srcImg,
+  quantity,
+}: CardSmallProps) {
+  const { updateCart } = useContext(CartContext)
+
+  function setCoffeeQuantity(newQuantity: number) {
+    console.log(newQuantity)
+    updateCart(key, newQuantity)
+  }
+
   return (
     <CardContainer>
       <ContentContainer>
@@ -24,7 +40,7 @@ export function CardSmall({ title, price, srcImg, quantity }: CardSmallProps) {
         <Details>
           <h5>{title}</h5>
           <ButtonsContainer>
-            <NumberInput defaultValue={quantity}/>
+            <NumberInput value={quantity} onChange={setCoffeeQuantity} />
             <SecondaryButton icon={<Trash size={16} />} label="Remover" />
           </ButtonsContainer>
         </Details>

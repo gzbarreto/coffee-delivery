@@ -33,7 +33,7 @@ interface CartState {
 
 export function cartReducer(state: CartState, action: any) {
   switch (action.type) {
-    case Actions.UPDATE_CART: {
+    case Actions.ADD_TO_CART: {
       const exists = state.coffeeList.some(
         (item) => item.coffee.id === action.payload.coffee.id
       )
@@ -57,6 +57,19 @@ export function cartReducer(state: CartState, action: any) {
         coffeeList: updatedCoffeeList,
       }
     }
+
+    case Actions.UPDATE_CART: {
+      const updatedCoffeeList = state.coffeeList.map((item) =>
+        item.coffee.id === action.payload.id
+          ? { ...item, quantity: action.payload.newQuantity }
+          : item
+      )
+      return {
+        ...state,
+        coffeeList: updatedCoffeeList,
+      }
+    }
+
     default:
       return state
   }
