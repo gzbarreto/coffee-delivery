@@ -13,10 +13,8 @@ export const CartButtonContainer = styled.button`
   border: 1px solid transparent;
   border-radius: 6px;
 
-
   cursor: pointer;
   transition: border 0.2s;
-
 
   &:hover {
     border: 1px solid ${(props) => props.theme["yellow"]};

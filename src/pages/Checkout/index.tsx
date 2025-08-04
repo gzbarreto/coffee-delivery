@@ -27,6 +27,10 @@ export function Checkout() {
   const { coffeeList, deliveryFee } = useContext(CartContext)
   const navigate = useNavigate()
 
+  const totalItemsPrice = coffeeList?.reduce((total, item) => {
+    return total + item.coffee.price * item.quantity
+  }, 0)
+
   return (
     <CheckoutContainer>
       <ContentWrapper>
@@ -83,32 +87,49 @@ export function Checkout() {
         <h4>Cafés selecionados</h4>
         <CartContainer>
           {coffeeList?.map((coffeeItem) => (
-            <CardSmall key={coffeeItem.coffee.id} {...coffeeItem.coffee} quantity={coffeeItem.quantity}/>
+            <CardSmall
+              key={coffeeItem.coffee.id}
+              {...coffeeItem.coffee}
+              quantity={coffeeItem.quantity}
+            />
           ))}
-          <Pricing>
-            <table>
-              <tbody>
-                <tr>
-                  <td>Total de itens</td>
-                  <td>R$29,70</td>
-                </tr>
-                <tr>
-                  <td>Entrega</td>
-                  <td>R${deliveryFee}</td>
-                </tr>
-                <tr>
-                  <td>Total</td>
-                  <td>
-                    <strong>R$33,20</strong>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </Pricing>
-          <PrimaryButton
-            label="Confirmar Pedido"
-            onClick={() => console.log(coffeeList)}
-          />
+          {/* checks if the cart is empty */}
+          {coffeeList && coffeeList.length > 0 ? (
+            <>
+              <Pricing>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Total de itens</td>
+                      <td>R${totalItemsPrice.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                      <td>Entrega</td>
+                      <td>R${deliveryFee.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                      <td>Total</td>
+                      <td>
+                        <strong>R${(totalItemsPrice + deliveryFee).toFixed(2)}</strong>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </Pricing>
+              <PrimaryButton
+                label="Confirmar Pedido"
+                onClick={() => console.log(coffeeList)}
+              />
+            </>
+          ) : (
+            <>
+              <p style={{padding: "1rem 0"}}>Seu carrinho está vazio.</p>
+              <PrimaryButton
+                label="Adicionar cafés"
+                onClick={() => navigate("/")}
+              />
+            </>
+          )}
         </CartContainer>
       </ContentWrapper>
     </CheckoutContainer>

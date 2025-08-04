@@ -19,13 +19,12 @@ export function App() {
   )
 }
 
-//TODO: refazer o contexto de order, trocando pra simplesmente CART. Nao precisa acompanhar o
-//pedido, apenas o carrinho, nao precisa nem de ID
+//TODO: corrigir posicao do botao do carrinho quando tem um badge
 
 // Requisitos do projeto:
 // - Listagem de produtos (cafés) disponíveis para compra DONE
 // - Adicionar uma quantidade específicas de itens no carrinho DONE
 // - Aumentar ou remover a quantidade de itens no carrinho DONE
 // - Formulário para o usuário preencher o seu endereço
-// - Exibir o total de itens no carrinho no Header 
+// - Exibir o total de itens no carrinho no Header DONE
 // - Exibir o valor total da soma de itens no carrinho multiplicados pelo valor (usar funcao REDUCE dos arrays)
