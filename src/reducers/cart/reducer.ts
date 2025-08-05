@@ -27,8 +27,8 @@ export interface Address {
 interface CartState {
   coffeeList: CoffeeOrder[]
   address?: Address
-  paymentMethod?: string
-  deliveryFee?: number
+  paymentMethod: "Cartão de Crédito" | "Cartão de Débito" | "Dinheiro"
+  deliveryFee: number
 }
 
 export function cartReducer(state: CartState, action: any) {
@@ -77,6 +77,16 @@ export function cartReducer(state: CartState, action: any) {
       return {
         ...state,
         coffeeList: updatedCoffeeList,
+      }
+    }
+
+    case Actions.SUBMIT_ORDER: {
+      console.log(action.payload)
+          return {
+        ...state,
+        address: action.payload.address,
+        paymentMethod: action.payload.paymentMethod,
+        coffeeList: [], // Clear the cart after submitting the order
       }
     }
 

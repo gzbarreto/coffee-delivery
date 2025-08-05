@@ -7,7 +7,7 @@ interface TextInputProps {
   area?: string
 }
 
-export function TextInput({ label, isOptional = false, area }: TextInputProps) {
+export function TextInput({ label, isOptional = false, area, ...rest }: TextInputProps) {
   const [isFocused, setIsFocused] = useState(false)
 
   return (
@@ -18,6 +18,7 @@ export function TextInput({ label, isOptional = false, area }: TextInputProps) {
         placeholder={label}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
+        {...rest} //conectar o input com o react hook form
       />
       {isOptional ? <span>Opcional</span> : null}
     </TextInputContainer>

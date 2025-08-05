@@ -6,8 +6,12 @@ import {
   SummaryContainer,
   TitleContainer,
 } from "./styles"
+import { useContext } from "react"
+import { CartContext } from "../../../contexts/CartContext"
 
 export function OrderConfirmed() {
+const { address, paymentMethod } = useContext(CartContext)
+
   return (
     <ConfirmationContainer>
       <div>
@@ -22,9 +26,9 @@ export function OrderConfirmed() {
             </HeroIcon>
             <div>
               <p>
-                Entrega em <strong>Rua Ribeirão Preto, 100</strong>
+                Entrega em <strong>{address?.street}, {address?.number}</strong>
               </p>
-              <p>Ferraz de Vasconcelos, SP</p>
+              <p>{address?.city}, {address?.state}</p>
             </div>
           </ItemContainer>
 
@@ -47,7 +51,7 @@ export function OrderConfirmed() {
             <div>
               <p>Modo de pagamento na entrega</p>
               <p>
-                <strong>Cartão de Crédito</strong>
+                <strong>{paymentMethod}</strong>
               </p>
             </div>
           </ItemContainer>

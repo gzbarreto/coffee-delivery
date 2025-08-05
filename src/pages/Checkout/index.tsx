@@ -5,6 +5,7 @@ import {
   MapPinLine,
   Money,
 } from "@phosphor-icons/react"
+
 import {
   AddressContainer,
   CartContainer,
@@ -22,14 +23,23 @@ import { PrimaryButton } from "../../components/Buttons/PrimaryButton"
 import { useNavigate } from "react-router"
 import { useContext } from "react"
 import { CartContext } from "../../contexts/CartContext"
+import { FormProvider, useForm } from "react-hook-form"
+import { Address } from "../../reducers/cart/reducer"
 
 export function Checkout() {
-  const { coffeeList, deliveryFee } = useContext(CartContext)
   const navigate = useNavigate()
+  const { coffeeList, deliveryFee, submitOrder, paymentMethod } =
+    useContext(CartContext)
+  const { register, handleSubmit } = useForm()
 
   const totalItemsPrice = coffeeList?.reduce((total, item) => {
     return total + item.coffee.price * item.quantity
   }, 0)
+
+  function handleSubmitOrder(address:Address) {
+    submitOrder(address, "Cartão de Débito") // payment method Temporário, depois pegar do estado do botão selecionado
+    navigate("/success")
+  }
 
   return (
     <CheckoutContainer>
@@ -44,14 +54,23 @@ export function Checkout() {
               <p>Informe o endereço onde deseja receber seu pedido</p>
             </div>
           </TitleContainer>
-          <form>
-            <TextInput label="CEP" area="cep" />
-            <TextInput label="Rua" area="street" />
-            <TextInput label="Número" area="number" />
-            <TextInput label="Complemento" isOptional area="complement" />
-            <TextInput label="Bairro" area="district" />
-            <TextInput label="Cidade" area="city" />
-            <TextInput label="UF" area="state" />
+          <form id="addressForm" onSubmit={handleSubmit(handleSubmitOrder)} >
+              <TextInput label="CEP" area="cep" {...register("cep")} />
+              <TextInput label="Rua" area="street" {...register("street")} />
+              <TextInput label="Número" area="number" {...register("number")} />
+              <TextInput
+                label="Complemento"
+                isOptional
+                area="complement"
+                {...register("complement")}
+              />
+              <TextInput
+                label="Bairro"
+                area="district"
+                {...register("district")}
+              />
+              <TextInput label="Cidade" area="city" {...register("city")} />
+              <TextInput label="UF" area="state" {...register("state")} />
           </form>
         </AddressContainer>
 
@@ -101,30 +120,34 @@ export function Checkout() {
                   <tbody>
                     <tr>
                       <td>Total de itens</td>
-                      <td>R${totalItemsPrice.toFixed(2)}</td>
+                      <td>R${totalItemsPrice?.toFixed(2)}</td>
                     </tr>
                     <tr>
                       <td>Entrega</td>
-                      <td>R${deliveryFee.toFixed(2)}</td>
+                      <td>R${deliveryFee?.toFixed(2)}</td>
                     </tr>
                     <tr>
                       <td>Total</td>
                       <td>
-                        <strong>R${(totalItemsPrice + deliveryFee).toFixed(2)}</strong>
+                        <strong>
+                          R${(totalItemsPrice + deliveryFee)?.toFixed(2)}
+                        </strong>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </Pricing>
               <PrimaryButton
-                label="Confirmar Pedido"
-                onClick={() => console.log(coffeeList)}
+                type="submit"
+                form="addressForm" // references the form by id
+                label="Confirmar Pedido"              
               />
             </>
           ) : (
             <>
-              <p style={{padding: "1rem 0"}}>Seu carrinho está vazio.</p>
+              <p style={{ padding: "1rem 0" }}>Seu carrinho está vazio.</p>
               <PrimaryButton
+                type="button"
                 label="Adicionar cafés"
                 onClick={() => navigate("/")}
               />

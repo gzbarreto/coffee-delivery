@@ -25,6 +25,8 @@ export function App() {
 // - Listagem de produtos (cafés) disponíveis para compra DONE
 // - Adicionar uma quantidade específicas de itens no carrinho DONE
 // - Aumentar ou remover a quantidade de itens no carrinho DONE
-// - Formulário para o usuário preencher o seu endereço
+// - Exibir o valor total da soma de itens no carrinho multiplicados pelo valor (usar funcao REDUCE dos arrays) DONE
 // - Exibir o total de itens no carrinho no Header DONE
-// - Exibir o valor total da soma de itens no carrinho multiplicados pelo valor (usar funcao REDUCE dos arrays)
+// - Formulário para o usuário preencher o seu endereço
+// - Fazer a validação dos campos do formulário
+// Selecionar a forma de pagamento (Cartão de Crédito, Débito ou Dinheiro)
